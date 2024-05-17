@@ -1,20 +1,20 @@
 [
   {
-    "label": "Go Test Test Function",
+    "label": "Go Run Test Function",
     "command": "go test $(dirname $ZED_FILE) -v -run ^$ZED_SYMBOL$",
     "tags": ["go-test"],
     "reveal": "always",
     "use_new_terminal": true
   },
   {
-    "label": "Go Test Subtest Function",
-    "command": "go test $(dirname $ZED_FILE) -v -run ^$ZED_SYMBOL$/^$(head -n $ZED_ROW $ZED_FILE | tail -1 | sed 's/.*t\\.Run(\"\\([^\"]*\\)\".*/\\1/g')$",
+    "label": "Go Run Subtest Function",
+    "command": "go test $(dirname $ZED_FILE) -v -run ^$ZED_SYMBOL$/^$(head -n $ZED_ROW $ZED_FILE | tail -1 | sed 's/.*t\\.Run(\"\\([^\"]*\\)\".*/\\1/g' |  tr ' ' '_' | sed \"s/[.[\\*+?^${}()|\\]/\\&/g\")$",
     "tags": ["go-subtest"],
     "reveal": "always",
     "use_new_terminal": true
   },
   {
-    "label": "Go Test Benchmark Function",
+    "label": "Go Run Benchmark Function",
     "command": "go test $(dirname $ZED_FILE) -benchmem -run=^$ -bench ^$ZED_SYMBOL$",
     "tags": ["go-benchmark"],
     "reveal": "always",
