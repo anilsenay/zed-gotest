@@ -1,0 +1,17 @@
+[
+  {
+    "label": "Go Test Current Test Function",
+    "command": "go test $(dirname $ZED_FILE) -v -run ^$ZED_SYMBOL$",
+    "tags": ["go-test"]
+  },
+  {
+    "label": "Go Test Current Test Function Subtest",
+    "command": "go test $(dirname $ZED_FILE) -v -run ^$ZED_SYMBOL$/^$(head -n $ZED_ROW $ZED_FILE | tail -1 | sed 's/.*t\\.Run(\"\\([^\"]*\\)\".*/\\1/g')$",
+    "tags": ["go-subtest"]
+  },
+  {
+    "label": "Go Test Current Benchmark Function",
+    "command": "go test $(dirname $ZED_FILE) -benchmem -run=^$ -bench ^$ZED_SYMBOL$",
+    "tags": ["go-benchmark"]
+  }
+]
