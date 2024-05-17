@@ -15,3 +15,9 @@
     (function_declaration name: (_) @run
         (#match? @run "^Benchmark.+"))
 ) @go-benchmark
+
+; go run
+(
+    (function_declaration name: (_) @run
+        (#match? @run "^main$"))
+) @go-run
